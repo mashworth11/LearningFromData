@@ -115,8 +115,8 @@ class newLinearRegression(object):
         
     def calcEin(self):
         """
-        Calculate the in sample error. WARNING THIS IS WRONG, but can't 
-        figure out why.
+        Calculate the in sample error. Note that this is the classification 
+        error!
         """      
         sign = lambda x: x and (-1 if x < 0 else 1)
         Ein = 0
