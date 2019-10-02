@@ -41,10 +41,11 @@ class NL_linearRegression(object):
         """
         Function to calculate the weights according to the linear regression algoridem
         """
-        self.pinvZ = np.linalg.pinv(self.Z)
-        return np.dot(self.pinvZ, self.Y)
+        pinvZ = np.linalg.pinv(self.Z)
+        return np.dot(pinvZ, self.Y)
     
-    def classError(self, w, Z, Y):
+    @staticmethod
+    def classificationError(w, Z, Y):
         """
         Calculate the classification error
         """
@@ -102,7 +103,7 @@ def findSmallestEout(train_dat, test_dat, K):
         Train = RNL_linearRegression(train_dat, k)
         w = Train.w
         Test = RNL_linearRegression(test_dat, k)
-        Eout = Train.classError(w, Test.Z, Test.Y)
+        Eout = Train.classificationError(w, Test.Z, Test.Y)
         EoutDict.update({k:Eout})
     return EoutDict
 
