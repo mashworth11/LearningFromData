@@ -86,7 +86,7 @@ class XV_constantRegression(XV_linearRegression):
         weightsDict = {}
         for k in self.dataSetDict.keys():
             X = np.array([np.ones(2), np.zeros(2)]).transpose()
-            Y = self.dataSetDict[k][1]
+            Y = self.dataSetDict[k][:,1]
             weightsDict.update({k:np.dot(np.linalg.pinv(X),Y)})
         return weightsDict
         
